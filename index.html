@@ -65,11 +65,12 @@
                                 <a href="team.html" class="dropdown-item">Our Team</a>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
+                                <a href="internship.html" class="dropdown-item">Internship</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+                   <!-- <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>  -->
                 </div>
             </nav>
 
@@ -282,8 +283,12 @@
                         <h1 class="text-center text-white mb-4">Stay Always In Touch</h1>
                         <p class="text-white mb-4">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit sed stet lorem sit clita duo justo</p>
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <form name="submit-to-google-sheet">
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" name="Email" placeholder="Enter Your Email" style="height: 48px;">
+                           <button type="submit" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            
+                        </form>
+                        <span id="msg" > </span>
                         </div>
                     </div>
                 </div>
@@ -605,5 +610,38 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
+
+
+<!--  for messa of news letter -->
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxg-7dPQKaNBN__jH1ntgynphtCCBTMDSKrZ1VjsYQLXL_c-obFu8rW0aZzUhTAdqVb/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  /* document.getElementById("notifyButton").addEventListener("click", function() {
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message");
+            if (email.includes("@") && email.includes(".")) {
+                message.style.display = "block";
+                message.style.color = "green";
+                message.innerText = "Thank you! We will notify you.";
+            } else {
+                message.style.display = "block";
+                message.style.color = "red";
+                message.innerText = "Please enter a valid email.";
+            }
+        });  */
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Thank You For Subscribing!"
+            setTimeout(function(){ msg.innerHTML = ""},5000)
+            form.reset()
+        }
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </html>
