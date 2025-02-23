@@ -61,9 +61,9 @@
                         <a href="project.html" class="nav-item nav-link">Project</a>
                         <a href="internship.html" class="nav-item nav-link">Career</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Carrer </a>
-                            <div class="dropdown-menu m-2">
-                               <!-- <a href="team.html" class="dropdown-item">Our Team</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="team.html" class="dropdown-item">Our Team</a>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>-->
                                 <a href="internship.html" class="dropdown-item">Internships</a>
@@ -71,6 +71,7 @@
                                 <a href="internship.html" class="dropdown-item">Jobs</a>
                             </div>
                         </div>
+                        
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                    <!-- <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>  -->
@@ -285,22 +286,27 @@
                         <p class="section-title text-white justify-content-center"><span></span>Newsletter<span></span></p>
                         <h1 class="text-center text-white mb-4">Stay Always In Touch</h1>
                         <p class="text-white mb-4">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit sed stet lorem sit clita duo justo</p>
-                        <div class="position-relative w-100 mt-3">
-                            <div class="position-relative w-100">
-                                <form name="submit-to-google-sheet" class="w-100">
-                                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" 
-                                           type="email" name="Email" 
-                                           placeholder="Enter Your Email" 
-                                           style="height: 48px;" required>
-                                    <button type="submit" 
-                                            class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2" 
-                                            style="z-index: 10;">
-                                        <i class="fa fa-paper-plane text-primary fs-4"></i>
-                                    </button>
-                                </form>
-                            </div>
-                            
-                            
+                        <div class="position-relative w-100">
+                            <form name="submit-to-google-sheet" class="w-100" id="emailForm">
+                                <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" 
+                                       type="email" name="Email" 
+                                       placeholder="Enter Your Email" 
+                                       style="height: 48px;" required>
+                                <button type="submit" 
+                                        class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2" 
+                                        style="z-index: 10;">
+                                    <i class="fa fa-paper-plane text-primary fs-4"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!--function for submission without refreshing. -->
+                        <script>
+                            document.getElementById('emailForm').addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                alert('Form submitted without refreshing!');
+                            });
+                        </script>
+                        
                         </form>
                         <span id="msg" > </span>
                         </div>
