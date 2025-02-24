@@ -547,6 +547,7 @@
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
+                    
                     <div class="col-md-6 col-lg-3">
                         <p class="section-title text-white h5 mb-4">Quick Link<span></span></p>
                         <a class="btn btn-link" href="">About Us</a>
@@ -555,7 +556,7 @@
                         <a class="btn btn-link" href="">Terms & Condition</a>
                         <a class="btn btn-link" href="">Career</a>
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                  <!--  <div class="col-md-6 col-lg-3">
                         <p class="section-title text-white h5 mb-4">Gallery<span></span></p>
                         <div class="row g-2">
                             <div class="col-4">
@@ -577,15 +578,15 @@
                                 <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
+                    </div> -->
+                  <!--  <div class="col-md-6 col-lg-3">
                        <p class="section-title text-white h5 mb-4">Newsletter   prev<span></span></p>
                         <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
                         <div class="position-relative w-100 mt-3"> 
                             <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;"> 
                             <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button> 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="container px-lg-5">
@@ -635,7 +636,7 @@
 
 <!--  for messa of news letter -->
 
-<script>
+<!--/*<script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxg-7dPQKaNBN__jH1ntgynphtCCBTMDSKrZ1VjsYQLXL_c-obFu8rW0aZzUhTAdqVb/exec'
     const form = document.forms['submit-to-google-sheet']
     const msg = document.getElementById("msg")
@@ -652,7 +653,7 @@
                 message.innerText = "Please enter a valid email.";
             }
         });  */
-    form.addEventListener('submit', e => {
+   /* form.addEventListener('submit', e => {
       e.preventDefault()
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
@@ -662,6 +663,6 @@
         }
         .catch(error => console.error('Error!', error.message))
     })
-  </script>
+  </script> -->
 
 </html>
