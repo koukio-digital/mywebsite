@@ -171,7 +171,7 @@
   list-style: none;
 
   [data-bs-target] {
-    box-sizing: content-box;
+    box-sizing: border-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;

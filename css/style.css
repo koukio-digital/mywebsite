@@ -512,7 +512,7 @@ h6,
 /*** Footer ***/
 .footer {
     margin-top: 6rem;
-    padding-top: 9rem;
+    padding-top: 6rem;
     background:
         url(../img/bg-top.png),
         url(../img/map.png);
@@ -554,7 +554,7 @@ h6,
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .footer .btn.btn-link:hover {
@@ -589,3 +589,24 @@ h6,
 .footer .footer-menu a:hover {
     color: var(--secondary);
 }
+
+.responsive-foterimage{
+    width: 200px;;
+    height: 75px;;
+}
+.responsive-image{
+    width: px;;
+    height: 75px;;
+}
+.foter{
+    margin-bottom: 1.5cm;
+}
+.responsive-image{
+    width:100px ;
+    height: 50px;
+}
+.responsive-stepimag{
+    width: 110px;
+    height: 50px;
+}
+
