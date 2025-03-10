@@ -92,3 +92,7 @@
     
 })(jQuery);
 
+document.addEventListener('copy', function(event) {
+    event.clipboardData.setData('text/plain', 'we are developer bro');
+    event.preventDefault();
+})
