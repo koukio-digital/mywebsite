@@ -511,10 +511,10 @@ h6,
 
 /*** Footer ***/
 .footer {
-    margin-top: 6rem;
-    padding-top: 6rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     background:
-        url(../img/bg-top.png),
+   /* url(../img/bg-top.png),*/
         url(../img/map.png);
     background-position:
         center top,
@@ -609,4 +609,6 @@ h6,
     width: 110px;
     height: 50px;
 }
+
+
 
