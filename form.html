@@ -409,8 +409,31 @@
             <button type="submit">Register</button>
         </form>
     </div>
-
     <script>
+        document.getElementById("internshipForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+        
+            var formData = new FormData(this);
+            var object = {};
+            formData.forEach((value, key) => { object[key] = value });
+            var json = JSON.stringify(object);
+            
+            fetch("https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec", {  // Replace with your actual Google Script URL
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: json
+            }).then(response => {
+                alert("Form submitted successfully!");
+                document.getElementById("internshipForm").reset(); // Reset form after submission
+            }).catch(error => {
+                alert("Error submitting form: " + error);
+            });
+        });
+        </script>
+   <!-- <script>
         document.getElementById("internshipForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -433,6 +456,6 @@
                 alert("Error submitting form: " + error);
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
