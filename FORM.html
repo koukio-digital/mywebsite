@@ -457,5 +457,32 @@
             });
         });
     </script> -->
+
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec";
+        const form = document.forms["submit-to-google-sheet"];
+  
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          var formData = new FormData(form);
+  
+          // Add any additional logic for checkboxes or other inputs here
+          var terms = document.getElementById("terms").checked;
+          if (terms) {
+            formData.append("terms", "Yes");
+          } else {
+            formData.append("terms", "No");
+          }
+  
+          fetch(scriptURL, { method: "POST", body: formData })
+            .then((response) => {
+              alert("Done! Submitted Successfully.");
+              form.reset(); // Reset the form after successful submission
+            })
+            .catch((error) => {
+              alert("Error! Something went wrong. Please try again.");
+            });
+        });
+      </script>
 </body>
 </html>
