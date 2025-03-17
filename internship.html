@@ -58,7 +58,7 @@
                         <a href="index.html" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="project.html" class="nav-item nav-link active">Project</a>
+                      <!--  <a href="project.html" class="nav-item nav-link active">Project</a> -->
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Career</a>
                             <div class="dropdown-menu m-0">
@@ -306,6 +306,39 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+     <script>
+        document.getElementById("internshipForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                gender: document.getElementById("gender").value,
+                contact: document.getElementById("contact").value,
+                roll: document.getElementById("roll").value,
+                whatsapp: document.getElementById("whatsapp").value,
+                college: document.getElementById("college").value,
+                year: document.querySelector('input[name="year"]:checked').value,
+                degree: document.getElementById("degree").value,
+                domain: document.querySelector('input[name="domain"]:checked').value,
+                resume: document.getElementById("resume").value
+            };
+        
+            fetch("https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec", {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Registration Successful!");
+                document.getElementById("internshipForm").reset();
+            })
+            .catch(error => console.error("Error:", error));
+        });
+        </script>
+    
 </body>
 
 </html>
