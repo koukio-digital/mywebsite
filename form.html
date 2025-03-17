@@ -117,10 +117,10 @@
         <form id="internshipForm">
             <label for="name">Name:</label>
             <input type="text" id="name" required>
-
+            
             <label for="email">Email:</label>
             <input type="email" id="email" required>
-
+            
             <label for="gender">Gender:</label>
             <select id="gender" required>
                 <option value="">Select</option>
@@ -128,19 +128,19 @@
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-
+            
             <label for="contact">Contact No:</label>
             <input type="tel" id="contact" required>
-
+            
             <label for="roll">Roll No:</label>
             <input type="text" id="roll" required>
-
+            
             <label for="whatsapp">WhatsApp No:</label>
             <input type="tel" id="whatsapp" required>
-
+            
             <label for="college">College:</label>
             <input type="text" id="college" required>
-
+            
             <label>Current Year of your Course:</label>
             <div class="radio-container">
                 <label><input type="radio" name="year" value="1st Year" required> 1st Year</label>
@@ -148,7 +148,7 @@
                 <label><input type="radio" name="year" value="3rd Year" required> 3rd Year</label>
                 <label><input type="radio" name="year" value="4th Year" required> 4th Year</label>
             </div>
-
+            
             <label for="degree">Currently Pursuing Academic Degree:</label>
             <select id="degree" required>
                 <option value="">Select</option>
@@ -158,15 +158,25 @@
                 <option value="MCA">MCA</option>
                 <option value="BSc">BSc</option>
             </select>
-
+            
+            <label>Preferred Internship Domain:</label>
+            <div class="radio-container">
+                <label><input type="radio" name="domain" value="Web Development" required> Web Development Intern</label>
+                <label><input type="radio" name="domain" value="Software Development" required> Software Development Intern</label>
+                <label><input type="radio" name="domain" value="Full Stack" required> Full Stack Development Intern</label>
+                <label><input type="radio" name="domain" value="Android" required> Android Development Intern</label>
+                <label><input type="radio" name="domain" value="UI/UX" required> UI/UX Design Intern</label>
+                <label><input type="radio" name="domain" value="Front-End" required> Front-End Development Intern</label>
+            </div>
+            
             <label for="resume">Upload Resume (PDF, Max 100KB):</label>
             <input type="file" id="resume" accept="application/pdf" required>
-
+            
             <div class="terms-inline">
                 <input type="checkbox" id="terms" required>
                 <label for="terms">I agree to the terms and conditions</label>
             </div>
-
+            
             <button type="submit">Register</button>
         </form>
     </div>
