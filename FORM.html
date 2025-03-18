@@ -247,6 +247,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internship Registration Form</title>
+    <link href="img/Blue.jpg" rel="icon">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -340,9 +341,9 @@
 <body>
     <div class="container">
         <div class="banner">
-            <img src="img/logo.png" alt="Company Banner">
+            <img src="img/logoform.jpg" alt="Company Banner">
         </div>
-        <h2>Internship Registration</h2>
+        <h2>INTERNSHIP DELEGATE APPLICATION</h2>
         <form id="internshipForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -413,7 +414,7 @@
 
 
       <script>
-      document.getElementById("internshipForm").addEventListener("submit", function(event) {
+  document.getElementById("internshipForm").addEventListener("submit", function(event) {
   event.preventDefault();
 
   var formData = new FormData(this);
@@ -438,6 +439,7 @@
 function submitForm(data) {
   fetch("https://script.google.com/macros/s/AKfycbzr84tA6nKZgR4NUZikDiAv4CLHL4MUFWLWxAo-1M8LTLN9CTWE7hfU0WPfiVmktil7vA/exec", {
     method: "POST",
+    mode: "no-cors", // Add this line to handle CORS issues
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
