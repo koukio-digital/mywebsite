@@ -409,80 +409,47 @@
             <button type="submit">Register</button>
         </form>
     </div>
-    <script>
-        document.getElementById("internshipForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-        
-            var formData = new FormData(this);
-            var object = {};
-            formData.forEach((value, key) => { object[key] = value });
-            var json = JSON.stringify(object);
-            
-            fetch("https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec", {  // Replace with your actual Google Script URL
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: json
-            }).then(response => {
-                alert("Form submitted successfully!");
-                document.getElementById("internshipForm").reset(); // Reset form after submission
-            }).catch(error => {
-                alert("Error submitting form: " + error);
-            });
-        });
-        </script>
-   <script>
-        document.getElementById("internshipForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+   
 
-            var formData = new FormData(this);
-            var object = {};
-            formData.forEach((value, key) => { object[key] = value });
-            var json = JSON.stringify(object);
-            
-            fetch("https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: json
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert("Form submitted successfully!");
-                document.getElementById("internshipForm").reset();
-            })
-            .catch(error => {
-                alert("Error submitting form: " + error);
-            });
-        });
-    </script> 
 
-  <!--  <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwuf6v8cikfuitZVFRwaovQTam2bs4i_cstsPcxO9-DpgZxJ7mHEV-q2_D4kdaCNWoz/exec";
-        const form = document.forms["submit-to-google-sheet"];
-  
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          var formData = new FormData(form);
-  
-          // Add any additional logic for checkboxes or other inputs here
-          var terms = document.getElementById("terms").checked;
-          if (terms) {
-            formData.append("terms", "Yes");
-          } else {
-            formData.append("terms", "No");
-          }
-  
-          fetch(scriptURL, { method: "POST", body: formData })
-            .then((response) => {
-              alert("Done! Submitted Successfully.");
-              form.reset(); // Reset the form after successful submission
-            })
-            .catch((error) => {
-              alert("Error! Something went wrong. Please try again.");
-            });
-        });
-      </script>  -->
+      <script>
+      document.getElementById("internshipForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var formData = new FormData(this);
+  var object = {};
+  formData.forEach((value, key) => { object[key] = value });
+
+  // Handle file upload
+  var fileInput = document.getElementById("resume");
+  if (fileInput.files.length > 0) {
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      object.resume = e.target.result.split(",")[1]; // Convert file to base64
+      submitForm(object);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    submitForm(object);
+  }
+});
+
+function submitForm(data) {
+  fetch("https://script.google.com/macros/s/AKfycbzr84tA6nKZgR4NUZikDiAv4CLHL4MUFWLWxAo-1M8LTLN9CTWE7hfU0WPfiVmktil7vA/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+    document.getElementById("internshipForm").reset();
+  })
+  .catch(error => {
+    alert("Error submitting form: " + error.message);
+  });
+}
+    </script>
 </body>
 </html>
