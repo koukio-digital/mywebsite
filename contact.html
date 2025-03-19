@@ -142,9 +142,33 @@
                 </div>
             </div>
         </div>
+        <script>
+            const form = document.querySelector("form");
+          
+            form.addEventListener("submit", (e) => {
+              e.preventDefault(); // Prevent default form submission
+          
+              const formData = new FormData(form);
+              const data = {};
+              formData.forEach((value, key) => (data[key] = value));
+          
+              fetch("https://script.google.com/macros/s/AKfycbzx6bUINN-3FdveelVGd8pb3UsOiLvh_ZxhvNqB2ZkPDuCmLu-Rn62Roo0sS2RdoY2C/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              })
+                .then((response) => response.json())
+                .then((result) => {
+                  alert(result.message); // Show success message
+                  form.reset(); // Reset the form
+                })
+                .catch((error) => {
+                  alert("Error submitting form: " + error.message); // Show error message
+                });
+            });
+          </script>
 
-
-
+<!--
 
         <script> 
          document.querySelector("form").addEventListener("submit", function(event) {
@@ -169,7 +193,7 @@
               alert("Error submitting form: " + error.message); // Show error message
             });
           });
-          </script>
+          </script>  -->
         <!-- Contact End -->
         
 
