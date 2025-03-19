@@ -143,57 +143,33 @@
             </div>
         </div>
         <script>
-            const form = document.querySelector("form");
-          
-            form.addEventListener("submit", (e) => {
-              e.preventDefault(); // Prevent default form submission
-          
-              const formData = new FormData(form);
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent default form submission
+        
+              const formData = new FormData(this);
               const data = {};
               formData.forEach((value, key) => (data[key] = value));
-          
-              fetch("https://script.google.com/macros/s/AKfycbx1s9iadjpVW_EdybPucZsE8RRC0ZvUuI1rbjnKVici1XGH4rZS2a-XD2-xBarlyUZ-/exec", {
+        
+              fetch("https://script.google.com/macros/s/AKfycbyD7jxgInCmlRNLODRon63Tr92z2QUsSSShkK31w7UtY9AkhBmDhjo4cyunG8lWQaoX_g/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
               })
-                .then((response) => response.json())
-                .then((result) => {
+                .then(response => response.json())
+                .then(result => {
                   alert(result.message); // Show success message
-                  form.reset(); // Reset the form
+                  document.getElementById("contactForm").reset(); // Reset the form
                 })
-                .catch((error) => {
+                .catch(error => {
                   alert("Error submitting form: " + error.message); // Show error message
                 });
             });
           </script>
+            
 
-<!--
+            
 
-        <script> 
-         document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault();
-          
-            var formData = new FormData(this);
-            var data = {};
-            formData.forEach((value, key) => (data[key] = value));
-          
-            fetch("https://script.google.com/macros/s/AKfycbzx6bUINN-3FdveelVGd8pb3UsOiLvh_ZxhvNqB2ZkPDuCmLu-Rn62Roo0sS2RdoY2C/exec", {
-              method: "POST",
-              mode: "no-cors", // Add this line to handle CORS issues
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-              alert(data.message); // Show success message
-              form.reset(); // Reset the form
-            })
-            .catch(error => {
-              alert("Error submitting form: " + error.message); // Show error message
-            });
-          });
-          </script>  -->
+       
         <!-- Contact End -->
         
 
