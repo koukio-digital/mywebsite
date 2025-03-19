@@ -105,7 +105,7 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                            <!-- <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https">Download Now</a>.</p>-->
-                            <form method="post" action="https://script.google.com/macros/s/AKfycbwLwFegaGrWWyTsHFx1qExPhLxm15U3pdR_49uOS1m565zWBQ61Vlv5cZYU5vUWB0G77Q/exec">
+                            <form method="post">
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -142,6 +142,34 @@
                 </div>
             </div>
         </div>
+
+
+
+
+        <script> 
+         document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+          
+            var formData = new FormData(this);
+            var data = {};
+            formData.forEach((value, key) => (data[key] = value));
+          
+            fetch("https://script.google.com/macros/s/AKfycbzx6bUINN-3FdveelVGd8pb3UsOiLvh_ZxhvNqB2ZkPDuCmLu-Rn62Roo0sS2RdoY2C/exec", {
+              method: "POST",
+              mode: "no-cors", // Add this line to handle CORS issues
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+              alert(data.message); // Show success message
+              form.reset(); // Reset the form
+            })
+            .catch(error => {
+              alert("Error submitting form: " + error.message); // Show error message
+            });
+          });
+          </script>
         <!-- Contact End -->
         
 

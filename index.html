@@ -308,32 +308,31 @@
                         </script> -->
 
 
-                        <script>
-                            const form = document.getElementById("emailForm");
+                        <script>               
+                           document.getElementById("emailForm").addEventListener("submit", function(event) {
+                            event.preventDefault();
                           
-                            form.addEventListener("submit", (e) => {
-                              e.preventDefault(); // Prevent default form submission
+                            var formData = new FormData(this);
+                            var data = {};
+                            formData.forEach((value, key) => (data[key] = value));
                           
-                              const formData = new FormData(form);
-                              const data = {};
-                              formData.forEach((value, key) => (data[key] = value));
-                          
-                              fetch("https://script.google.com/macros/s/AKfycbykASFPhAd7Jm1tN8xyoKzJRmErNy97mrETnPl1rIENzRFmvjMtRr1e9JbWvuUq3yALAQ/exec", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(data),
-                              })
-                                .then((response) => response.json())
-                                .then((result) => {
-                                  alert(result.message); // Show success message
-                                  form.reset(); // Reset the form
-                                })
-                                .catch((error) => {
-                                  alert("Error submitting form: " + error.message); // Show error message
-                                });
+                            fetch("https://script.google.com/macros/s/AKfycbykASFPhAd7Jm1tN8xyoKzJRmErNy97mrETnPl1rIENzRFmvjMtRr1e9JbWvuUq3yALAQ/exec", {
+                              method: "POST",
+                              mode: "no-cors", // Add this line to handle CORS issues
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(data)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                              alert(data.message); // Show success message
+                              form.reset(); // Reset the form
+                            })
+                            .catch(error => {
+                              alert("Error submitting form: " + error.message); // Show error message
                             });
-                          </script>
-                        
+                          });
+
+                        </script>
                         </form>
                         <span id="msg" > </span>
                         </div>
