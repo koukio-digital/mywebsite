@@ -300,12 +300,39 @@
                             </form>
                         </div>
                         <!--function for submission without refreshing. -->
-                        <script>
+                       <!---   <script>
                             document.getElementById('emailForm').addEventListener('submit', function(e) {
                                 e.preventDefault();
                                 alert('Form submitted without refreshing!');
                             });
-                        </script>
+                        </script> -->
+
+
+                        <script>
+                            const form = document.getElementById("emailForm");
+                          
+                            form.addEventListener("submit", (e) => {
+                              e.preventDefault(); // Prevent default form submission
+                          
+                              const formData = new FormData(form);
+                              const data = {};
+                              formData.forEach((value, key) => (data[key] = value));
+                          
+                              fetch("https://script.google.com/macros/s/AKfycbykASFPhAd7Jm1tN8xyoKzJRmErNy97mrETnPl1rIENzRFmvjMtRr1e9JbWvuUq3yALAQ/exec", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(data),
+                              })
+                                .then((response) => response.json())
+                                .then((result) => {
+                                  alert(result.message); // Show success message
+                                  form.reset(); // Reset the form
+                                })
+                                .catch((error) => {
+                                  alert("Error submitting form: " + error.message); // Show error message
+                                });
+                            });
+                          </script>
                         
                         </form>
                         <span id="msg" > </span>
