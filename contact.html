@@ -142,30 +142,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            document.getElementById("contactForm").addEventListener("submit", function(event) {
-              event.preventDefault(); // Prevent default form submission
         
-              const formData = new FormData(this);
-              const data = {};
-              formData.forEach((value, key) => (data[key] = value));
-        
-              fetch("https://script.google.com/macros/s/AKfycbyD7jxgInCmlRNLODRon63Tr92z2QUsSSShkK31w7UtY9AkhBmDhjo4cyunG8lWQaoX_g/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-              })
-                .then(response => response.json())
-                .then(result => {
-                  alert(result.message); // Show success message
-                  document.getElementById("contactForm").reset(); // Reset the form
-                })
-                .catch(error => {
-                  alert("Error submitting form: " + error.message); // Show error message
-                });
-            });
-          </script>
-            
 
             
 
@@ -268,7 +245,7 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="Google Sheet.js"></script>
+    <script src="Google Sheet.js"></script> 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
