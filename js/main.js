@@ -93,7 +93,7 @@
 })(jQuery);
 
 document.addEventListener('copy', function(event) {
-    event.clipboardData.setData('text/plain', 'we are developer bro');
+    event.clipboardData.setData('text/plain', 'https://www.linkedin.com/company/growcell/');
     event.preventDefault();
 })
 
@@ -105,3 +105,33 @@ document.querySelectorAll('input, textarea').forEach(function(input) {
       alert('Pasting is not allowed in this field!');
     });
   });
+
+
+
+  // Disable right-click on the entire page
+document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+});
+
+// Disable dragging of images
+document.addEventListener("dragstart", function(event) {
+    event.preventDefault();
+});
+
+// Disable keyboard shortcuts for saving
+document.addEventListener("keydown", function(event) {
+    // Disable Ctrl+S, Ctrl+U, Ctrl+Shift+I, F12
+    if (event.ctrlKey && (event.key === "s" || event.key === "u" || event.key === "p")) {
+        event.preventDefault();
+    }
+    if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+        event.preventDefault();
+    }
+});
+
+// Disable image downloads
+document.querySelectorAll('img').forEach(function(img) {
+    img.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+});
