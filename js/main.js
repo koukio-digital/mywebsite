@@ -96,3 +96,12 @@ document.addEventListener('copy', function(event) {
     event.clipboardData.setData('text/plain', 'we are developer bro');
     event.preventDefault();
 })
+
+
+// Disable paste in all input fields
+document.querySelectorAll('input, textarea').forEach(function(input) {
+    input.addEventListener('paste', function(event) {
+      event.preventDefault();
+      alert('Pasting is not allowed in this field!');
+    });
+  });

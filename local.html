@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Registration Form</title>
+    <link href="img/Blue.jpg" rel="icon">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #6222CC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .banner img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #6222CC;
+            font-weight: 600;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: none;
+            border-radius: 6px;
+            background: #f8f9fa;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border: 2px solid #6222CC;
+        }
+
+        .radio-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            background: rgb(208, 223, 37);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: rgb(27, 210, 18);
+        }
+
+        .terms-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                max-width: 100%;
+                padding: 20px;
+            }
+        }
+
+        /* Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Checkmark Animation */
+        .checkmark-container {
+            width: 60px;
+            height: 60px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            animation: popIn 0.3s ease-out;
+        }
+
+        .checkmark {
+            width: 25px;
+            height: 45px;
+            border-width: 0 6px 6px 0;
+            border-style: solid;
+            border-color: white;
+            transform: rotate(45deg);
+            animation: drawCheck 0.4s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+
+            80% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes drawCheck {
+            0% {
+                height: 0;
+                width: 0;
+                opacity: 0;
+            }
+
+            100% {
+                height: 45px;
+                width: 25px;
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #e04343;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="img/logoform.jpg" alt="Company Banner">
+        </div>
+        <h2>INTERNSHIP DELEGATE APPLICATION</h2>
+        <form id="internshipForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="contact">Contact No:</label>
+            <input type="tel" id="contact" name="contact" required>
+
+            <label for="roll">Roll No:</label>
+            <input type="text" id="roll" name="roll" required>
+
+            <label for="whatsapp">WhatsApp No:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required>
+
+            <label for="college">College:</label>
+            <input type="text" id="college" name="college" required>
+
+            <label>Current Year of your Course:</label>
+            <div class="radio-container">
+                <label><input type="radio" name="year" value="1st Year" required> 1st Year</label>
+                <label><input type="radio" name="year" value="2nd Year" required> 2nd Year</label>
+                <label><input type="radio" name="year" value="3rd Year" required> 3rd Year</label>
+                <label><input type="radio" name="year" value="4th Year" required> 4th Year</label>
+            </div>
+
+            <label for="degree">Currently Pursuing Academic Degree:</label>
+            <select id="degree" name="degree" required>
+                <option value="">Select</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="B.E.">B.E.</option>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+                <option value="BSc">BSc</option>
+            </select>
+
+            <label>Preferred Internship Domain:</label>
+            <div class="radio-container">
+                <label><input type="radio" name="domain" value="Web Development" required> Web Development Intern</label>
+                <label><input type="radio" name="domain" value="Software Development" required> Software Development Intern</label>
+                <label><input type="radio" name="domain" value="Full Stack" required> Full Stack Development Intern</label>
+                <label><input type="radio" name="domain" value="Android" required> Android Development Intern</label>
+                <label><input type="radio" name="domain" value="UI/UX" required> UI/UX Design Intern</label>
+                <label><input type="radio" name="domain" value="Front-End" required> Front-End Development Intern</label>
+            </div>
+
+            <label for="resume">Upload Resume (PDF, Max 100KB):</label>
+            <input type="file" id="resume" name="resume" accept="application/pdf" required>
+
+            <div class="terms-inline">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <!-- Checkmark Icon -->
+            <div class="checkmark-container">
+                <div class="checkmark"></div>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your form has been submitted successfully.</p>
+            <button class="close-btn" onclick="closeModalAndRedirect()">OK</button>
+            <!--<button class="close-btn" onclick="closeModal()">OK</button> -->
+        </div>
+    </div>
+
+    <script>
+
+function closeModalAndRedirect() {
+  closeModal(); // Call your existing function to close the modal
+  window.location.href = "index.html"; // Redirect to the home page
+}     
+        document.getElementById("internshipForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            var object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+
+            // Handle file upload
+            var fileInput = document.getElementById("resume");
+            if (fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    object.resume = e.target.result.split(",")[1]; // Convert file to base64
+                    submitForm(object);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                submitForm(object);
+            }
+        });
+
+        function submitForm(data) {
+            fetch("https://script.google.com/macros/s/AKfycbzr84tA6nKZgR4NUZikDiAv4CLHL4MUFWLWxAo-1M8LTLN9CTWE7hfU0WPfiVmktil7vA/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    // Show animated popup after submission
+                    document.getElementById("popupModal").style.display = "block";
+                    document.getElementById("internshipForm").reset();
+                })
+                .catch(error => {
+                    alert("Error submitting form: " + error.message);
+                });
+        }
+
+        function closeModal() {
+            document.getElementById("popupModal").style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            var modal = document.getElementById("popupModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+
+        
+// Disable paste in all input fields
+document.querySelectorAll('input, textarea').forEach(function(input) {
+    input.addEventListener('paste', function(event) {
+      event.preventDefault();
+      alert('Pasting is not allowed in this field!');
+    });
+  });
+
+
+  
+document.addEventListener('copy', function(event) {
+    event.clipboardData.setData('text/plain', 'we are developer bro');
+    event.preventDefault();
+})
+    </script>
+</body>
+
+</html>
